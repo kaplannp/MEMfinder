@@ -1,6 +1,5 @@
 #include <cassert>
 #include "RankBitvector.h"
-#include "Serialize.h"
 
 int popcount(uint64_t x)
 {
@@ -138,20 +137,28 @@ size_t RankBitvector::rankOne(size_t index) const
 	return result;
 }
 
+//zkn removing this beacuse we require boost style serialization to be 
+//compatible
+//with the other functions
 void RankBitvector::save(std::ostream& stream) const
-{
-	assert(ranksBuilt);
-	serialize(stream, values);
-	serialize(stream, realSize);
-}
+{}
+//{
+//	assert(ranksBuilt);
+//	serialize(stream, values);
+//	serialize(stream, realSize);
+//}
 
+//zkn removing this beacuse we require boost style serialization to be 
+//compatible
+//with the other functions
 void RankBitvector::load(std::istream& stream)
-{
-	assert(!ranksBuilt);
-	deserialize(stream, values);
-	deserialize(stream, realSize);
-	ranksBuilt = true;
-}
+{}
+//{
+//	assert(!ranksBuilt);
+//	deserialize(stream, values);
+//	deserialize(stream, realSize);
+//	ranksBuilt = true;
+//}
 
 bool RankBitvector::operator==(const RankBitvector& other) const
 {

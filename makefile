@@ -1,5 +1,5 @@
 GPP=$(CXX)
-CPPFLAGS=-Wall -Wextra -std=c++17 -O3 -g -Ilibsais/src -IPartSortBWT/src $(DEBUGFLAG)
+CPPFLAGS=-Wall -Wextra -std=c++17 -O3 -g -I$(GA_HOME)/include/boost -Ilibsais/src -IPartSortBWT/src $(DEBUGFLAG)
 
 ODIR=obj
 BINDIR=bin
@@ -14,7 +14,7 @@ DEPS = $(patsubst %, $(SRCDIR)/%, $(_DEPS))
 _OBJ = RankBitvector.o WaveletTree.o FMIndex.o MEMfinder.o ReverseComplementView.o Serialize.o FlatRanks.o
 OBJ = $(patsubst %, $(ODIR)/%, $(_OBJ)) $(ODIR)/sais.o $(ODIR)/sais64.o $(ODIR)/PartSortBWT.o
 
-LINKFLAGS = $(CPPFLAGS) -static-libstdc++
+LINKFLAGS = $(CPPFLAGS) -static-libstdc++ -lboost_serialization
 
 VERSION := Branch $(shell git rev-parse --abbrev-ref HEAD) commit $(shell git rev-parse HEAD) $(shell git show -s --format=%ci)
 

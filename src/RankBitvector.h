@@ -5,10 +5,26 @@
 #include <vector>
 #include <iostream>
 
+//boost libraries
+#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
+
 // "Optimized Succinct Data Structures for Massive Data", Simon Gog, Matthias Petri 2014.
 // Section 3: A CACHE FRIENDLY RANK IMPLEMENTATION FOR UNCOMPRESSED BITVECTORS
 class RankBitvector
 {
+private:
+  /* zkn boost serialization stuff */
+  friend class boost::serialization::access;
+  /*
+   * Not actually serializing any members, just want the template params
+   */
+  template<class Archive>
+  void serialize(Archive& ar, const unsigned int version){
+    ar & values;
+    ar & ranksBuilt;
+    ar & realSize;
+  }
 public:
 	RankBitvector();
 	RankBitvector(size_t size);
