@@ -1,12 +1,12 @@
 GPP=$(CXX)
-CPPFLAGS=-Wall -Wextra -std=c++17 -O3 -g -I$(GA_HOME)/include/boost -Ilibsais/src -IPartSortBWT/src $(DEBUGFLAG)
+CPPFLAGS=-Wall -Wextra -std=c++17 -O3 -g -I$(GA_HOME)/include -Ilibsais/src -IPartSortBWT/src $(DEBUGFLAG)
 
 ODIR=obj
 BINDIR=bin
 LIBDIR=lib
 SRCDIR=src
 
-LIBS=
+LIBS= -L$(GA_HOME)/lib
 
 _DEPS = RankBitvector.h WaveletTree.h FMIndex.h MEMfinder.h ReverseComplementView.h Serialize.h FlatRanks.h
 DEPS = $(patsubst %, $(SRCDIR)/%, $(_DEPS))
