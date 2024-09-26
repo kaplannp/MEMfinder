@@ -1,4 +1,6 @@
 GPP=$(CXX)
+BOOST_INCLUDE=$(CONDA_PREFIX)/include
+BOOST_LIB=$(CONDA_PREFIX)/lib
 CPPFLAGS=-Wall -Wextra -std=c++17 -O3 -g -I$(BOOST_INCLUDE) -Ilibsais/src -IPartSortBWT/src  $(DEBUGFLAG) 
 
 ODIR=obj
